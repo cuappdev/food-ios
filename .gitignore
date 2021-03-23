@@ -5,6 +5,7 @@ Food/Supporting/Keys.plist
 ## User settings
 xcuserdata/
 .DS_Store
+*/.DS_Store
 
 # CocoaPods
 Pods/
@@ -26,7 +27,6 @@ playground.xcworkspace
 Packages/
 Package.pins
 Package.resolved
-*.xcodeproj
 *.xcodeproj/project.xcworkspace/xcuserdata/
 *.xcodeproj/xcuserdata/
 *.xcworkspace/xcuserdata/
