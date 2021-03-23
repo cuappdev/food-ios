@@ -30,5 +30,6 @@ file_length: 400
 # Warn about short variable names, but allow certain exceptions for common
 # loop names
 identifier_name:
-  severity: warning
+  min_length: 3
+  max_length: 40
   excluded: ["i", "j", "k"]
