@@ -32,4 +32,4 @@ file_length: 400
 identifier_name:
   min_length: 3
   max_length: 40
-  excluded: ["i", "j", "k"]
+  excluded: ["i", "j", "k", "id"]
