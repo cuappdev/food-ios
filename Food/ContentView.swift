@@ -8,7 +8,7 @@
 import SwiftUI
 import GoogleSignIn
 
-private class GoogleSignInManager: NSObject, GIDSignInDelegate {
+private class GoogleSignInManager: UIViewController, GIDSignInDelegate {
 
     var name: String?
     var email: String?
@@ -23,19 +23,27 @@ private class GoogleSignInManager: NSObject, GIDSignInDelegate {
         setUserInformation(user: user)
     }
 
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        print("signed out...")
+    }
+
     func setUserInformation(user: GIDGoogleUser) {
         name = user.profile.name
         email = user.profile.email
         userId = user.userID
     }
 
-    // override init() {
-    //     GIDSignIn.sharedInstance().delegate = self
+}
 
-    //     let presentingViewController = UIApplication.shared.windows.last?.rootViewController
-    //     print("presentingViewController: \(presentingViewController)")
-    //     GIDSignIn.sharedInstance()?.presentingViewController = presentingViewController
-    // }
+struct GoogleSignInButton: UIViewRepresentable {
+
+    func makeUIView(context: Context) -> GIDSignInButton {
+        GIDSignInButton()
+    }
+
+    func updateUIView(_ uiView: GIDSignInButton, context: Context) {
+        print("..!")
+    }
 
 }
 
@@ -45,16 +53,21 @@ struct ContentView: View {
 
     init() {
         GIDSignIn.sharedInstance().delegate = signInManager
-
-        let presentingViewController = UIApplication.shared.windows.last?.rootViewController
-        print("presentingViewController: \(presentingViewController)")
-        // TODO this is nil; where to present...
-        GIDSignIn.sharedInstance()?.presentingViewController = presentingViewController
+        GIDSignIn.sharedInstance()?.presentingViewController = signInManager
     }
 
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Spacer()
+        VStack {
+            Text("Hello, world!")
+                .padding()
+
+            GoogleSignInButton()
+                .frame(height: 80)
+                .padding(90)
+
+        }
+        Spacer()
     }
 }
 
