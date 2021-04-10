@@ -8,64 +8,30 @@
 import SwiftUI
 import GoogleSignIn
 
-private class GoogleSignInManager: UIViewController, GIDSignInDelegate {
-
-    var name: String?
-    var email: String?
-    var userId: String?
-
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if let error = error {
-            print("\(error.localizedDescription)")
-            return
-        }
-
-        setUserInformation(user: user)
-    }
-
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        print("signed out...")
-    }
-
-    func setUserInformation(user: GIDGoogleUser) {
-        name = user.profile.name
-        email = user.profile.email
-        userId = user.userID
-    }
-
-}
-
-struct GoogleSignInButton: UIViewRepresentable {
-
-    func makeUIView(context: Context) -> GIDSignInButton {
-        GIDSignInButton()
-    }
-
-    func updateUIView(_ uiView: GIDSignInButton, context: Context) { }
-
-}
-
 struct ContentView: View {
 
-    @State private var signInManager = GoogleSignInManager()
+    @EnvironmentObject var signInManager: GoogleSignInManager
+    private var googleSignInViewController = UIViewController()
 
-    init() {
+    private func setupGoogleSignIn() {
         GIDSignIn.sharedInstance().delegate = signInManager
-        GIDSignIn.sharedInstance()?.presentingViewController = signInManager
+        GIDSignIn.sharedInstance()?.presentingViewController = googleSignInViewController
     }
 
     var body: some View {
-        Spacer()
         VStack {
+            Spacer()
+
             Text("Hello, world!")
-                .padding()
+              .padding()
 
             GoogleSignInButton()
-                .frame(height: 80)
+                .frame(height: 48)
                 .padding(90)
 
+            Spacer()
         }
-        Spacer()
+        .onAppear(perform: setupGoogleSignIn)
     }
 }
 
