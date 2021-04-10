@@ -18,11 +18,11 @@ struct ContentView: View {
         GIDSignIn.sharedInstance()?.presentingViewController = googleSignInViewController
     }
 
-    var body: some View {
+    private func loggedOutViews() -> some View {
         VStack {
             Spacer()
 
-            Text("Hello, world!")
+            Text("Hello world!")
               .padding()
 
             GoogleSignInButton()
@@ -30,8 +30,35 @@ struct ContentView: View {
                 .padding(90)
 
             Spacer()
+        }.onAppear(perform: setupGoogleSignIn)
+    }
+
+    private func loggedInViews() -> some View {
+        let user = GIDSignIn.sharedInstance()?.currentUser
+
+        let name: String
+        if let user = user {
+            name = user.profile.name
+        } else {
+            name = "Anonymous"
         }
-        .onAppear(perform: setupGoogleSignIn)
+
+        return VStack {
+            Text("Hello \(name)")
+              .padding()
+
+            Button("Sign Out") {
+                GIDSignIn.sharedInstance()?.signOut()
+            }.padding()
+        }
+    }
+
+    var body: some View {
+        if signInManager.isSignedIn {
+            loggedInViews()
+        } else {
+            loggedOutViews()
+        }
     }
 }
 

@@ -10,9 +10,10 @@ import GoogleSignIn
 
 class GoogleSignInManager: NSObject, GIDSignInDelegate, ObservableObject {
 
-    @Published var name: String?
-    @Published var email: String?
-    @Published var userId: String?
+    var silly: Bool = true
+    var isSignedIn: Bool {
+        GIDSignIn.sharedInstance()?.hasPreviousSignIn() ?? false
+    }
 
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
@@ -20,18 +21,13 @@ class GoogleSignInManager: NSObject, GIDSignInDelegate, ObservableObject {
             return
         }
 
-        setUserInformation(user: user)
         print("signed in (:")
+        objectWillChange.send()
     }
 
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         print("signed out...")
-    }
-
-    func setUserInformation(user: GIDGoogleUser) {
-        name = user.profile.name
-        email = user.profile.email
-        userId = user.userID
+        objectWillChange.send()
     }
 
 }
