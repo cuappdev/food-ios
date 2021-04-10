@@ -41,9 +41,7 @@ struct GoogleSignInButton: UIViewRepresentable {
         GIDSignInButton()
     }
 
-    func updateUIView(_ uiView: GIDSignInButton, context: Context) {
-        print("..!")
-    }
+    func updateUIView(_ uiView: GIDSignInButton, context: Context) { }
 
 }
 
