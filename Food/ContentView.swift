@@ -19,13 +19,13 @@ struct ContentView: View {
 
     private func loggedOutViews() -> some View {
         VStack {
+            GoogleSignInViewController()
+              .frame(width: 0, height: 0)
+
             Spacer()
 
             Text("Hello world!")
               .padding()
-
-            GoogleSignInViewController()
-              .frame(width: 0, height: 0)
 
             GoogleSignInButton()
                 .frame(height: 48)
