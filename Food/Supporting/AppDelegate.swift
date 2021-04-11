@@ -6,6 +6,7 @@
 //
 
 import GoogleSignIn
+import Firebase
 
 class AppDelegate: NSObject, UIApplicationDelegate {
 
@@ -14,9 +15,18 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
 
-        GIDSignIn.sharedInstance().clientID = "TODO"
+        GIDSignIn.sharedInstance().clientID = Keys.googleClientID
+        FirebaseApp.configure()
 
         return true
+    }
+
+    func application(
+        _ app: UIApplication,
+        open url: URL,
+        options: [UIApplication.OpenURLOptionsKey: Any]
+    ) -> Bool {
+        GIDSignIn.sharedInstance().handle(url)
     }
 
 }

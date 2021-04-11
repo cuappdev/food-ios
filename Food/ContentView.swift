@@ -8,14 +8,40 @@
 import SwiftUI
 import GoogleSignIn
 
+struct WrapperViewController: UIViewControllerRepresentable {
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    func makeUIViewController(context: Context) -> UIViewController {
+        let viewController = UIViewController()
+        GIDSignIn.sharedInstance()?.presentingViewController = viewController
+        return viewController
+    }
+
+    func updateUIViewController(_ viewController: UIViewController, context: Context) {
+        print("updating view controller")
+    }
+
+    class Coordinator: NSObject {
+        var parent: WrapperViewController
+
+        init(_ wrapper: WrapperViewController) {
+            parent = wrapper
+        }
+
+    }
+}
+
 struct ContentView: View {
 
     @EnvironmentObject var signInManager: GoogleSignInManager
     private var googleSignInViewController = UIViewController()
+    @State private var showingSheet = false
 
     private func setupGoogleSignIn() {
         GIDSignIn.sharedInstance().delegate = signInManager
-        GIDSignIn.sharedInstance()?.presentingViewController = googleSignInViewController
     }
 
     private func loggedOutViews() -> some View {
@@ -24,6 +50,13 @@ struct ContentView: View {
 
             Text("Hello world!")
               .padding()
+
+            WrapperViewController()
+              .frame(width: 0, height: 0)
+
+            Button("---") {
+                showingSheet.toggle()
+            }
 
             GoogleSignInButton()
                 .frame(height: 48)
@@ -48,7 +81,13 @@ struct ContentView: View {
               .padding()
 
             Button("Sign Out") {
-                GIDSignIn.sharedInstance()?.signOut()
+                if let instance = GIDSignIn.sharedInstance() {
+                    instance.signOut()
+                }
+                //GIDSignIn.sharedInstance()?.signOut()
+                print("sign out")
+
+                signInManager.objectWillChange.send()
             }.padding()
         }
     }
@@ -58,6 +97,9 @@ struct ContentView: View {
             loggedInViews()
         } else {
             loggedOutViews()
+              .sheet(isPresented: $showingSheet) {
+                  Text("Hi")
+              }
         }
     }
 }

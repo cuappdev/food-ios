@@ -7,6 +7,7 @@ target 'Food' do
 
   # Pods for Food
   pod 'GoogleSignIn'
+  pod 'Firebase/Analytics'
 
   target 'FoodTests' do
     inherit! :search_paths
