@@ -8,37 +8,10 @@
 import SwiftUI
 import GoogleSignIn
 
-struct WrapperViewController: UIViewControllerRepresentable {
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-
-    func makeUIViewController(context: Context) -> UIViewController {
-        let viewController = UIViewController()
-        GIDSignIn.sharedInstance()?.presentingViewController = viewController
-        return viewController
-    }
-
-    func updateUIViewController(_ viewController: UIViewController, context: Context) {
-        print("updating view controller")
-    }
-
-    class Coordinator: NSObject {
-        var parent: WrapperViewController
-
-        init(_ wrapper: WrapperViewController) {
-            parent = wrapper
-        }
-
-    }
-}
-
 struct ContentView: View {
 
     @EnvironmentObject var signInManager: GoogleSignInManager
     private var googleSignInViewController = UIViewController()
-    @State private var showingSheet = false
 
     private func setupGoogleSignIn() {
         GIDSignIn.sharedInstance().delegate = signInManager
@@ -51,19 +24,16 @@ struct ContentView: View {
             Text("Hello world!")
               .padding()
 
-            WrapperViewController()
+            GoogleSignInViewController()
               .frame(width: 0, height: 0)
-
-            Button("---") {
-                showingSheet.toggle()
-            }
 
             GoogleSignInButton()
                 .frame(height: 48)
                 .padding(90)
 
             Spacer()
-        }.onAppear(perform: setupGoogleSignIn)
+        }
+          .onAppear(perform: setupGoogleSignIn)
     }
 
     private func loggedInViews() -> some View {
@@ -77,19 +47,20 @@ struct ContentView: View {
         }
 
         return VStack {
+            Spacer()
+
             Text("Hello \(name)")
-              .padding()
+
+            Spacer()
 
             Button("Sign Out") {
-                if let instance = GIDSignIn.sharedInstance() {
-                    instance.signOut()
-                }
-                //GIDSignIn.sharedInstance()?.signOut()
-                print("sign out")
-
+                GIDSignIn.sharedInstance().signOut()
                 signInManager.objectWillChange.send()
-            }.padding()
+            }
+
+            Spacer()
         }
+          .padding()
     }
 
     var body: some View {
@@ -97,9 +68,6 @@ struct ContentView: View {
             loggedInViews()
         } else {
             loggedOutViews()
-              .sheet(isPresented: $showingSheet) {
-                  Text("Hi")
-              }
         }
     }
 }

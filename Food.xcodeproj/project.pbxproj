@@ -18,6 +18,7 @@
 		4FC178F725FB12BF000421E4 /* FoodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC178F625FB12BF000421E4 /* FoodUITests.swift */; };
 		4FDF8D3626237C61008D3BBB /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF8D3526237C61008D3BBB /* Keys.swift */; };
 		4FDF8D4026237F20008D3BBB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4FDF8D3F26237F20008D3BBB /* GoogleService-Info.plist */; };
+		4FDF8D482623B56F008D3BBB /* GoogleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF8D472623B56F008D3BBB /* GoogleSignInViewController.swift */; };
 		98F2DF7EA3CACEABD11CDEFB /* Pods_Food.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD38206AE571A38AE9BBEE7F /* Pods_Food.framework */; };
 		A948FB898DF97EFBD1F9DC93 /* Pods_Food_FoodUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0999BA34BC298259320D75 /* Pods_Food_FoodUITests.framework */; };
 		AFFD8F46B59AABE253E33CFA /* Pods_FoodTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A959A0FC2A35E438C490F249 /* Pods_FoodTests.framework */; };
@@ -60,6 +61,7 @@
 		4FC178F825FB12BF000421E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FDF8D3526237C61008D3BBB /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		4FDF8D3F26237F20008D3BBB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4FDF8D472623B56F008D3BBB /* GoogleSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInViewController.swift; sourceTree = "<group>"; };
 		5D0999BA34BC298259320D75 /* Pods_Food_FoodUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Food_FoodUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E07422697FA6B7015700408 /* Pods-FoodTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTests.debug.xcconfig"; path = "Target Support Files/Pods-FoodTests/Pods-FoodTests.debug.xcconfig"; sourceTree = "<group>"; };
 		92CC5C047EAA3093B21BD843 /* Pods-Food.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food.release.xcconfig"; path = "Target Support Files/Pods-Food/Pods-Food.release.xcconfig"; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				4F612A2F26221FE700293889 /* GoogleSignInButton.swift */,
+				4FDF8D472623B56F008D3BBB /* GoogleSignInViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FDF8D482623B56F008D3BBB /* GoogleSignInViewController.swift in Sources */,
 				4F612A2826221FA100293889 /* AppDelegate.swift in Sources */,
 				4FDF8D3626237C61008D3BBB /* Keys.swift in Sources */,
 				4FC178DC25FB12BD000421E4 /* ContentView.swift in Sources */,
