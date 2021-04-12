@@ -9,7 +9,6 @@ import SwiftUI
 import GoogleSignIn
 
 struct ContentView: View {
-
     @EnvironmentObject var signInManager: GoogleSignInManager
     private var googleSignInViewController = UIViewController()
 
@@ -20,12 +19,12 @@ struct ContentView: View {
     private func loggedOutViews() -> some View {
         VStack {
             GoogleSignInViewController()
-              .frame(width: 0, height: 0)
+                .frame(width: 0, height: 0)
 
             Spacer()
 
             Text("Hello world!")
-              .padding()
+                .padding()
 
             GoogleSignInButton()
                 .frame(height: 48)
@@ -33,7 +32,7 @@ struct ContentView: View {
 
             Spacer()
         }
-          .onAppear(perform: setupGoogleSignIn)
+            .onAppear(perform: setupGoogleSignIn)
     }
 
     private func loggedInViews() -> some View {
@@ -48,19 +47,15 @@ struct ContentView: View {
 
         return VStack {
             Spacer()
-
             Text("Hello \(name)")
-
             Spacer()
-
             Button("Sign Out") {
                 GIDSignIn.sharedInstance().signOut()
                 signInManager.objectWillChange.send()
             }
-
             Spacer()
         }
-          .padding()
+            .padding()
     }
 
     var body: some View {

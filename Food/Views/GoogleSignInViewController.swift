@@ -8,10 +8,9 @@
 import SwiftUI
 import GoogleSignIn
 
-/// This View Controller is used by GoogleSignIn present a view controller that allows the User to sign in
-/// This just has to be alive in the heirarchy in order for it to present (does not even have to be visible)
+/// This View is used by GoogleSignIn to present a view controller for the the user to sign in.
+/// This view just has to be alive in the hierarchy in order for it to present (does not even have to be visible)
 struct GoogleSignInViewController: UIViewControllerRepresentable {
-
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
@@ -34,5 +33,4 @@ struct GoogleSignInViewController: UIViewControllerRepresentable {
         }
 
     }
-
 }

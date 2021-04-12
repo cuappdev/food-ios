@@ -5,17 +5,15 @@
 //  Created by Phillip OReggio on 4/10/21.
 //
 
-import SwiftUI
 import GoogleSignIn
+import SwiftUI
 
 struct GoogleSignInButton: UIViewRepresentable {
-
     func makeUIView(context: Context) -> GIDSignInButton {
         GIDSignInButton()
     }
 
     func updateUIView(_ uiView: GIDSignInButton, context: Context) { }
-
 }
 
 struct GoogleSignInButton_Previews: PreviewProvider {
