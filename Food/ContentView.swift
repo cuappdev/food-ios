@@ -10,7 +10,7 @@ import GoogleSignIn
 
 struct ContentView: View {
 
-    @EnvironmentObject var signInManager: GoogleSignInManager
+    @EnvironmentObject private var signInManager: GoogleSignInManager
     private var googleSignInViewController = UIViewController()
 
     private func setupGoogleSignIn() {
