@@ -26,11 +26,7 @@ struct GoogleSignInViewController: UIViewControllerRepresentable {
     }
 
     class Coordinator: NSObject {
-        var parent: GoogleSignInViewController
-
-        init(_ viewController: GoogleSignInViewController) {
-            parent = viewController
-        }
+        let parent: GoogleSignInViewController
 
     }
 }
