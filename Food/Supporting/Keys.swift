@@ -13,9 +13,7 @@ struct Keys {
     private static let googleServiceDict: NSDictionary = {
         guard let path = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist"),
             let dict = NSDictionary(contentsOfFile: path)
-        else {
-            return [:]
-        }
+        else { return [:] }
         return dict
     }()
 }
