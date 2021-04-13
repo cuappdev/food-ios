@@ -8,9 +8,7 @@
 import Foundation
 import GoogleSignIn
 
-class GoogleSignInManager: ObservableObject {
-
-    private var delegate: GoogleSignInManager.GoogleSignInDelegate
+class GoogleSignInManager: NSObject, GIDSignInDelegate, ObservableObject {
 
     var isSignedIn: Bool {
         GIDSignIn.sharedInstance()?.hasPreviousSignIn() ?? false
@@ -20,20 +18,16 @@ class GoogleSignInManager: ObservableObject {
         GIDSignIn.sharedInstance()?.currentUser
     }
 
-    private init() {
-        delegate = GoogleSignInDelegate()
-    }
+    override private init() {}
 
     static func create() -> GoogleSignInManager {
         let signInManager = GoogleSignInManager()
-        signInManager.delegate.manager = signInManager
-        GIDSignIn.sharedInstance().delegate = signInManager.delegate
+        GIDSignIn.sharedInstance().delegate = signInManager
         return signInManager
     }
 
     func signIn() {
         GIDSignIn.sharedInstance().signIn()
-        objectWillChange.send()
     }
 
     func signOut() {
@@ -41,20 +35,16 @@ class GoogleSignInManager: ObservableObject {
         objectWillChange.send()
     }
 
-    private class GoogleSignInDelegate: NSObject, GIDSignInDelegate {
-        weak var manager: GoogleSignInManager?
-
-        func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-            if let error = error {
-                print("\(error.localizedDescription)")
-                return
-            }
-
-            manager?.objectWillChange.send()
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            print("\(error.localizedDescription)")
+            return
         }
 
-        func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-            manager?.objectWillChange.send()
-        }
+        objectWillChange.send()
+    }
+
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        objectWillChange.send()
     }
 }
