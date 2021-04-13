@@ -13,7 +13,7 @@ struct ContentView: View {
 
     var loggedOutViews: some View {
         VStack {
-            GoogleSignInViewController()
+            GoogleSignInView()
                 .frame(width: 0, height: 0)
             Spacer()
             Text("Hello world!")
@@ -28,7 +28,7 @@ struct ContentView: View {
     var loggedInViews: some View {
         VStack {
             Spacer()
-            if let name = signInManager.user.profile.name {
+            if let name = signInManager.user?.profile.name {
                 Text("Hello \(name)")
             } else {
                 Text("Hello Anonymous")
