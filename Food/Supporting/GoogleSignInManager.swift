@@ -9,7 +9,6 @@ import Foundation
 import GoogleSignIn
 
 class GoogleSignInManager: NSObject, GIDSignInDelegate, ObservableObject {
-
     var isSignedIn: Bool {
         GIDSignIn.sharedInstance()?.hasPreviousSignIn() ?? false
     }

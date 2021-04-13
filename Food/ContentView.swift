@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject private var signInManager: GoogleSignInManager
-    private var googleSignInView = UIViewController()
 
     var loggedOutViews: some View {
         VStack {
