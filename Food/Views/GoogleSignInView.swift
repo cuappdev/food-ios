@@ -5,8 +5,8 @@
 //  Created by Phillip OReggio on 4/11/21.
 //
 
-import SwiftUI
 import GoogleSignIn
+import SwiftUI
 
 /// This View is used by GoogleSignIn to present a view controller for the the user to sign in.
 /// This view just has to be alive in the hierarchy in order for it to present (does not even have to be visible)
