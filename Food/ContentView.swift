@@ -6,38 +6,27 @@
 //
 
 import SwiftUI
-import GoogleSignIn
 
 struct ContentView: View {
-
     @EnvironmentObject private var signInManager: GoogleSignInManager
     private var googleSignInViewController = UIViewController()
-
-    private func setupGoogleSignIn() {
-        GIDSignIn.sharedInstance().delegate = signInManager
-    }
 
     private func loggedOutViews() -> some View {
         VStack {
             GoogleSignInViewController()
                 .frame(width: 0, height: 0)
-
             Spacer()
-
             Text("Hello world!")
                 .padding()
-
             GoogleSignInButton()
                 .frame(height: 48)
                 .padding(90)
-
             Spacer()
         }
-            .onAppear(perform: setupGoogleSignIn)
     }
 
     private func loggedInViews() -> some View {
-        let user = GIDSignIn.sharedInstance()?.currentUser
+        let user = signInManager.user
 
         let name: String
         if let user = user {
@@ -51,8 +40,7 @@ struct ContentView: View {
             Text("Hello \(name)")
             Spacer()
             Button("Sign Out") {
-                GIDSignIn.sharedInstance().signOut()
-                signInManager.objectWillChange.send()
+                signInManager.signOut()
             }
             Spacer()
         }
