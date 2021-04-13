@@ -10,7 +10,7 @@ import GoogleSignIn
 
 /// This View is used by GoogleSignIn to present a view controller for the the user to sign in.
 /// This view just has to be alive in the hierarchy in order for it to present (does not even have to be visible)
-struct GoogleSignInViewController: UIViewControllerRepresentable {
+struct GoogleSignInView: UIViewControllerRepresentable {
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
@@ -31,6 +31,5 @@ struct GoogleSignInViewController: UIViewControllerRepresentable {
         init(_ viewController: GoogleSignInViewController) {
             parent = viewController
         }
-
     }
 }

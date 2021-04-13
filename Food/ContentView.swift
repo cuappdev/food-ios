@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject private var signInManager: GoogleSignInManager
-    private var googleSignInViewController = UIViewController()
+    private var googleSignInView = UIViewController()
 
-    private func loggedOutViews() -> some View {
+    var loggedOutViews: some View {
         VStack {
             GoogleSignInViewController()
                 .frame(width: 0, height: 0)
@@ -25,19 +25,14 @@ struct ContentView: View {
         }
     }
 
-    private func loggedInViews() -> some View {
-        let user = signInManager.user
-
-        let name: String
-        if let user = user {
-            name = user.profile.name
-        } else {
-            name = "Anonymous"
-        }
-
-        return VStack {
+    var loggedInViews: some View {
+        VStack {
             Spacer()
-            Text("Hello \(name)")
+            if let name = signInManager.user.profile.name {
+                Text("Hello \(name)")
+            } else {
+                Text("Hello Anonymous")
+            }
             Spacer()
             Button("Sign Out") {
                 signInManager.signOut()
@@ -49,9 +44,9 @@ struct ContentView: View {
 
     var body: some View {
         if signInManager.isSignedIn {
-            loggedInViews()
+            loggedInViews
         } else {
-            loggedOutViews()
+            loggedOutViews
         }
     }
 }

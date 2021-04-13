@@ -5,19 +5,16 @@
 //  Created by Phillip OReggio on 4/10/21.
 //
 
-import GoogleSignIn
 import Firebase
+import GoogleSignIn
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
-
         GIDSignIn.sharedInstance().clientID = Keys.googleClientID
         FirebaseApp.configure()
-
         return true
     }
 
@@ -28,5 +25,4 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     ) -> Bool {
         GIDSignIn.sharedInstance().handle(url)
     }
-
 }

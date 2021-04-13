@@ -6,8 +6,8 @@ target 'Food' do
   use_frameworks!
 
   # Pods for Food
-  pod 'GoogleSignIn'
   pod 'Firebase/Analytics'
+  pod 'GoogleSignIn'
 
   target 'FoodTests' do
     inherit! :search_paths

@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct FoodApp: App {
-
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
     var body: some Scene {
@@ -18,5 +17,4 @@ struct FoodApp: App {
                 .environmentObject(GoogleSignInManager.create())
         }
     }
-
 }
