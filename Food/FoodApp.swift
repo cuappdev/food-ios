@@ -14,7 +14,7 @@ struct FoodApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(GoogleSignInManager.create())
+                .environmentObject(GoogleSignInManager())
         }
     }
 }

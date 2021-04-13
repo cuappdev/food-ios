@@ -18,12 +18,9 @@ class GoogleSignInManager: NSObject, GIDSignInDelegate, ObservableObject {
         GIDSignIn.sharedInstance()?.currentUser
     }
 
-    override private init() {}
-
-    static func create() -> GoogleSignInManager {
-        let signInManager = GoogleSignInManager()
-        GIDSignIn.sharedInstance().delegate = signInManager
-        return signInManager
+    override init() {
+        super.init()
+        GIDSignIn.sharedInstance()?.delegate = self
     }
 
     func signIn() {
