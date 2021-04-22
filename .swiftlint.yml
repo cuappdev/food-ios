@@ -20,6 +20,7 @@ opt_in_rules:
 
 excluded:
   - Pods
+  - Food/API.swift
 
 # Disable build error on long line lengths, but give warnings
 line_length: 120
