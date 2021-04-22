@@ -72,6 +72,7 @@ public final class DetailQuery: GraphQLQuery {
     query Detail($id: Int = 1) {
       Media(id: $id) {
         __typename
+        id
         title {
           __typename
           romaji
@@ -140,6 +141,7 @@ public final class DetailQuery: GraphQLQuery {
       public static var selections: [GraphQLSelection] {
         return [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(Int.self))),
           GraphQLField("title", type: .object(Title.selections)),
           GraphQLField("description", type: .scalar(String.self)),
           GraphQLField("status", type: .scalar(MediaStatus.self)),
@@ -155,8 +157,8 @@ public final class DetailQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(title: Title? = nil, description: String? = nil, status: MediaStatus? = nil, seasonYear: Int? = nil, episodes: Int? = nil, coverImage: CoverImage? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Media", "title": title.flatMap { (value: Title) -> ResultMap in value.resultMap }, "description": description, "status": status, "seasonYear": seasonYear, "episodes": episodes, "coverImage": coverImage.flatMap { (value: CoverImage) -> ResultMap in value.resultMap }])
+      public init(id: Int, title: Title? = nil, description: String? = nil, status: MediaStatus? = nil, seasonYear: Int? = nil, episodes: Int? = nil, coverImage: CoverImage? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Media", "id": id, "title": title.flatMap { (value: Title) -> ResultMap in value.resultMap }, "description": description, "status": status, "seasonYear": seasonYear, "episodes": episodes, "coverImage": coverImage.flatMap { (value: CoverImage) -> ResultMap in value.resultMap }])
       }
 
       public var __typename: String {
@@ -165,6 +167,16 @@ public final class DetailQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// The id of the media
+      public var id: Int {
+        get {
+          return resultMap["id"]! as! Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
         }
       }
 

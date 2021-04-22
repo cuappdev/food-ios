@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,9 @@
 		516B3E8426322C2D00F30558 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 516B3E8326322C2D00F30558 /* schema.json */; };
 		516B3E8926322C3400F30558 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516B3E8826322C3400F30558 /* API.swift */; };
 		516B3E9126322C7100F30558 /* AnimeDetail.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 516B3E9026322C7100F30558 /* AnimeDetail.graphql */; };
+		516B3E9626322EC200F30558 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516B3E9526322EC200F30558 /* Models.swift */; };
+		516B3E9E2632331C00F30558 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516B3E9D2632331C00F30558 /* Network.swift */; };
+		516B3EAB2632348D00F30558 /* SampleAnimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516B3EAA2632348D00F30558 /* SampleAnimeView.swift */; };
 		98F2DF7EA3CACEABD11CDEFB /* Pods_Food.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD38206AE571A38AE9BBEE7F /* Pods_Food.framework */; };
 		A948FB898DF97EFBD1F9DC93 /* Pods_Food_FoodUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0999BA34BC298259320D75 /* Pods_Food_FoodUITests.framework */; };
 		AFFD8F46B59AABE253E33CFA /* Pods_FoodTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A959A0FC2A35E438C490F249 /* Pods_FoodTests.framework */; };
@@ -68,6 +71,9 @@
 		516B3E8326322C2D00F30558 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = schema.json; path = Food/schema.json; sourceTree = SOURCE_ROOT; };
 		516B3E8826322C3400F30558 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = Food/API.swift; sourceTree = SOURCE_ROOT; };
 		516B3E9026322C7100F30558 /* AnimeDetail.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AnimeDetail.graphql; sourceTree = "<group>"; };
+		516B3E9526322EC200F30558 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		516B3E9D2632331C00F30558 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		516B3EAA2632348D00F30558 /* SampleAnimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAnimeView.swift; sourceTree = "<group>"; };
 		5D0999BA34BC298259320D75 /* Pods_Food_FoodUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Food_FoodUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E07422697FA6B7015700408 /* Pods-FoodTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTests.debug.xcconfig"; path = "Target Support Files/Pods-FoodTests/Pods-FoodTests.debug.xcconfig"; sourceTree = "<group>"; };
 		92CC5C047EAA3093B21BD843 /* Pods-Food.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food.release.xcconfig"; path = "Target Support Files/Pods-Food/Pods-Food.release.xcconfig"; sourceTree = "<group>"; };
@@ -115,6 +121,8 @@
 				516B3E8326322C2D00F30558 /* schema.json */,
 				516B3E8826322C3400F30558 /* API.swift */,
 				516B3E9026322C7100F30558 /* AnimeDetail.graphql */,
+				516B3E9526322EC200F30558 /* Models.swift */,
+				516B3E9D2632331C00F30558 /* Network.swift */,
 			);
 			path = Supporting;
 			sourceTree = "<group>";
@@ -157,6 +165,7 @@
 				4F612A2626221F8300293889 /* Views */,
 				4FC178D925FB12BD000421E4 /* FoodApp.swift */,
 				4FC178DB25FB12BD000421E4 /* ContentView.swift */,
+				516B3EAA2632348D00F30558 /* SampleAnimeView.swift */,
 				4FC178DD25FB12BF000421E4 /* Assets.xcassets */,
 				4FC178E225FB12BF000421E4 /* Info.plist */,
 				4FC178DF25FB12BF000421E4 /* Preview Content */,
@@ -369,6 +378,7 @@
 		};
 		516B3E7F26322B8100F30558 /* Apollo CLI */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -526,12 +536,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				516B3E9E2632331C00F30558 /* Network.swift in Sources */,
 				4FDF8D482623B56F008D3BBB /* GoogleSignInView.swift in Sources */,
 				4F612A2826221FA100293889 /* AppDelegate.swift in Sources */,
+				516B3EAB2632348D00F30558 /* SampleAnimeView.swift in Sources */,
 				4FDF8D3626237C61008D3BBB /* Keys.swift in Sources */,
 				4FC178DC25FB12BD000421E4 /* ContentView.swift in Sources */,
 				4F612A3026221FE700293889 /* GoogleSignInButton.swift in Sources */,
 				4FC178DA25FB12BD000421E4 /* FoodApp.swift in Sources */,
+				516B3E9626322EC200F30558 /* Models.swift in Sources */,
 				516B3E8926322C3400F30558 /* API.swift in Sources */,
 				4F612A1F26221F7300293889 /* GoogleSignInManager.swift in Sources */,
 			);
