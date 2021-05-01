@@ -1,6 +1,6 @@
-# food-ios
+# Food
 
-# Setting up GraphQL Codegen with Apollo
+## Setting up GraphQL Codegen with Apollo
 To automate recompiling the `API.swift` file after making modifications to any `*.graphql` query files, here's what to do: 
 1. Go to the Build Phases tab in the Food target, and add a New Run Script Phase with the following script: 
   ```

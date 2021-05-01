@@ -5,11 +5,12 @@
 //  Created by Hanzheng Li on 4/22/21.
 //
 
-import SwiftUI
 import SDWebImageSwiftUI
+import SwiftUI
 
 struct SampleAnimeView: View {
     @State var media: Media
+    
     var body: some View {
         VStack {
             Text(media.title?.title ?? "?")
@@ -17,7 +18,7 @@ struct SampleAnimeView: View {
                 WebImage(url: url)
             }
         }.onAppear(perform: {
-            Network.getMedia(for: 1) { (media) in
+            Network.getMedia(for: 1) { media in
                 self.media = media
             }
         })

@@ -5,9 +5,9 @@
 //  Created by Hanzheng Li on 4/22/21.
 //
 
-import Foundation
 import Apollo
 import Combine
+import Foundation
 
 class Network {
     static let shared = ApolloClient(url: URL(string: "https://graphql.anilist.co/")!)
