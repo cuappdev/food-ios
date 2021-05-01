@@ -1,0 +1,21 @@
+
+query Detail($id:Int = 1) {
+  Media(id:$id) {
+    id
+    title {
+      romaji
+      english
+      native
+      userPreferred
+    }
+    description
+    status
+    seasonYear
+    episodes
+    coverImage {
+      medium
+      large
+      extraLarge
+    }
+  }
+}
