@@ -5,9 +5,11 @@
 //  Created by Phillip OReggio on 3/11/21.
 //
 
+import AuthenticationServices
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.window) var window: UIWindow?
     @EnvironmentObject private var signInManager: GoogleSignInManager
 
     var loggedOutViews: some View {
@@ -20,6 +22,10 @@ struct ContentView: View {
             GoogleSignInButton()
                 .frame(height: 48)
                 .padding(90)
+            Spacer()
+            AppleSignInButton()
+                .frame(width: 280, height: 60)
+                .onTapGesture(perform: showAppleLogin)
             Spacer()
         }
     }
@@ -47,6 +53,23 @@ struct ContentView: View {
         } else {
             loggedOutViews
         }
+    }
+    
+    private func showAppleLogin() {
+        let appleIDRequest = ASAuthorizationAppleIDProvider().createRequest()
+        appleIDRequest.requestedScopes = [.fullName]
+        let passwordRequest = ASAuthorizationPasswordProvider().createRequest()
+        let controller = ASAuthorizationController(authorizationRequests: [appleIDRequest, passwordRequest])
+        let delegate = AppleSignInDelegate(window: window) { didSucceed in
+            if didSucceed {
+                print("yay i succeeded")
+            } else {
+                print("oh no i failed")
+            }
+        }
+        controller.delegate = delegate
+        controller.presentationContextProvider = delegate
+        controller.performRequests()
     }
 }
 

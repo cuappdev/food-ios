@@ -13,9 +13,7 @@ struct FoodApp: App {
 
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-//                .environmentObject(GoogleSignInManager())
-            SampleAnimeView(media: Media())
+            ContentView().environmentObject(GoogleSignInManager())
         }
     }
 }

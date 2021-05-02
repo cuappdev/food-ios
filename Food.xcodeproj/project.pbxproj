@@ -25,6 +25,9 @@
 		516B3E9626322EC200F30558 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516B3E9526322EC200F30558 /* Models.swift */; };
 		516B3E9E2632331C00F30558 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516B3E9D2632331C00F30558 /* Network.swift */; };
 		516B3EAB2632348D00F30558 /* SampleAnimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516B3EAA2632348D00F30558 /* SampleAnimeView.swift */; };
+		51E63487263E1C040085F58E /* AppleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E63486263E1C040085F58E /* AppleSignInButton.swift */; };
+		51E6348C263E245D0085F58E /* AppleSignInDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E6348B263E245D0085F58E /* AppleSignInDelegate.swift */; };
+		51E63498263E3B8A0085F58E /* WindowEnvironmentKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E63497263E3B8A0085F58E /* WindowEnvironmentKey.swift */; };
 		98F2DF7EA3CACEABD11CDEFB /* Pods_Food.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD38206AE571A38AE9BBEE7F /* Pods_Food.framework */; };
 		A948FB898DF97EFBD1F9DC93 /* Pods_Food_FoodUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0999BA34BC298259320D75 /* Pods_Food_FoodUITests.framework */; };
 		AFFD8F46B59AABE253E33CFA /* Pods_FoodTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A959A0FC2A35E438C490F249 /* Pods_FoodTests.framework */; };
@@ -74,6 +77,10 @@
 		516B3E9526322EC200F30558 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		516B3E9D2632331C00F30558 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		516B3EAA2632348D00F30558 /* SampleAnimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAnimeView.swift; sourceTree = "<group>"; };
+		51E63482263E1B9F0085F58E /* Food.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Food.entitlements; sourceTree = "<group>"; };
+		51E63486263E1C040085F58E /* AppleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInButton.swift; sourceTree = "<group>"; };
+		51E6348B263E245D0085F58E /* AppleSignInDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInDelegate.swift; sourceTree = "<group>"; };
+		51E63497263E3B8A0085F58E /* WindowEnvironmentKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowEnvironmentKey.swift; sourceTree = "<group>"; };
 		5D0999BA34BC298259320D75 /* Pods_Food_FoodUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Food_FoodUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E07422697FA6B7015700408 /* Pods-FoodTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTests.debug.xcconfig"; path = "Target Support Files/Pods-FoodTests/Pods-FoodTests.debug.xcconfig"; sourceTree = "<group>"; };
 		92CC5C047EAA3093B21BD843 /* Pods-Food.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Food.release.xcconfig"; path = "Target Support Files/Pods-Food/Pods-Food.release.xcconfig"; sourceTree = "<group>"; };
@@ -123,6 +130,8 @@
 				516B3E9026322C7100F30558 /* AnimeDetail.graphql */,
 				516B3E9526322EC200F30558 /* Models.swift */,
 				516B3E9D2632331C00F30558 /* Network.swift */,
+				51E6348B263E245D0085F58E /* AppleSignInDelegate.swift */,
+				51E63497263E3B8A0085F58E /* WindowEnvironmentKey.swift */,
 			);
 			path = Supporting;
 			sourceTree = "<group>";
@@ -132,6 +141,7 @@
 			children = (
 				4F612A2F26221FE700293889 /* GoogleSignInButton.swift */,
 				4FDF8D472623B56F008D3BBB /* GoogleSignInView.swift */,
+				51E63486263E1C040085F58E /* AppleSignInButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -161,6 +171,7 @@
 		4FC178D825FB12BD000421E4 /* Food */ = {
 			isa = PBXGroup;
 			children = (
+				51E63482263E1B9F0085F58E /* Food.entitlements */,
 				4F612A1D26221F3900293889 /* Supporting */,
 				4F612A2626221F8300293889 /* Views */,
 				4FC178D925FB12BD000421E4 /* FoodApp.swift */,
@@ -540,9 +551,12 @@
 				4FDF8D482623B56F008D3BBB /* GoogleSignInView.swift in Sources */,
 				4F612A2826221FA100293889 /* AppDelegate.swift in Sources */,
 				516B3EAB2632348D00F30558 /* SampleAnimeView.swift in Sources */,
+				51E63487263E1C040085F58E /* AppleSignInButton.swift in Sources */,
 				4FDF8D3626237C61008D3BBB /* Keys.swift in Sources */,
+				51E6348C263E245D0085F58E /* AppleSignInDelegate.swift in Sources */,
 				4FC178DC25FB12BD000421E4 /* ContentView.swift in Sources */,
 				4F612A3026221FE700293889 /* GoogleSignInButton.swift in Sources */,
+				51E63498263E3B8A0085F58E /* WindowEnvironmentKey.swift in Sources */,
 				4FC178DA25FB12BD000421E4 /* FoodApp.swift in Sources */,
 				516B3E9626322EC200F30558 /* Models.swift in Sources */,
 				516B3E8926322C3400F30558 /* API.swift in Sources */,
@@ -704,6 +718,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Food/Food.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Food/Preview Content\"";
 				DEVELOPMENT_TEAM = ZGMCXU7X3U;
@@ -727,6 +742,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Food/Food.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Food/Preview Content\"";
 				DEVELOPMENT_TEAM = ZGMCXU7X3U;
